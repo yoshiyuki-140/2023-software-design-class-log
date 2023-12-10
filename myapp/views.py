@@ -7,6 +7,8 @@ from myapp.models import Item
 
 def shopfirst(request):
     '''
+    shopfirst.htmlを表示する
+    DBに保存も行う
     '''
     items = Item.objects.all()
 
@@ -22,7 +24,7 @@ def shopfirst(request):
     else:
         form = ItemForm()
 
-    total = sum(item.total for item in items)
+    total = sum(item.total for item in items) # 合計値を計算
 
     return render(request, 'myapp/shopfirst.html', context={
         'form': form,
